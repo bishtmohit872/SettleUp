@@ -9,7 +9,7 @@ import { Plus, User, Users } from "lucide-react";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { BarLoader } from "react-spinners";
-import CreateGroupModel from "./_components/CreateGroupModel";
+import CreateGroupModel from "./components/CreateGroupModel";
 import { useRouter,useSearchParams } from "next/navigation";
 
 const ContactPage = () => {
@@ -114,7 +114,7 @@ const ContactPage = () => {
           ) : (
             <div className="flex flex-col gap-4">
               {groups.map((group) => (
-                <Link key={group.id} href={`/person/${group.id}`}>
+                <Link key={group.id} href={`/groups/${group.id}`}>
                   <Card className="hover:bg-muted/30 transition-colors- cursor-pointer">
                     <CardContent className="py-4">
                       <div className="flex items-center justify-between">

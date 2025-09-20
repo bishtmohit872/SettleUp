@@ -3,7 +3,7 @@ import { v } from "convex/values";
 import { internal } from "./_generated/api";
 
 
-const createSettlement = mutation=>({
+export const createSettlement = mutation({
   args: {
     amount: v.number(), // must be > 0
     note: v.optional(v.string()),
@@ -15,6 +15,7 @@ const createSettlement = mutation=>({
   handler: async (ctx, args) => {
     // Use centralized getCurrentUser function
     const caller = await ctx.runQuery(internal.users.getCurrentUser);
+
 
     if (args.amount <= 0) throw new Error("Amount must be positive");
     if (args.paidByUserId === args.receivedByUserId) {
@@ -64,7 +65,7 @@ export const getSettlementData = query({
     const me = await ctx.runQuery(internal.users.getCurrentUser);
 
     if (args.entityType === "user") {
-   
+      /* ─────────────────────────────────────────────── user page */
       const other = await ctx.db.get(args.entityId);
       if (!other) throw new Error("User not found");
 
@@ -158,13 +159,13 @@ export const getSettlementData = query({
       const isMember = group.members.some((m) => m.userId === me._id);
       if (!isMember) throw new Error("You are not a member of this group");
 
-
+      
       const expenses = await ctx.db
         .query("expenses")
         .withIndex("by_group", (q) => q.eq("groupId", group._id))
         .collect();
 
-     
+
       const balances = {};
       group.members.forEach((m) => {
         if (m.userId !== me._id) balances[m.userId] = { owed: 0, owing: 0 };
@@ -173,7 +174,7 @@ export const getSettlementData = query({
 
       for (const exp of expenses) {
         if (exp.paidByUserId === me._id) {
-     
+          // I paid; others may owe me
           exp.splits.forEach((split) => {
             if (split.userId !== me._id && !split.paid) {
               balances[split.userId].owed += split.amount;
@@ -186,14 +187,14 @@ export const getSettlementData = query({
         }
       }
 
-     
+
       const settlements = await ctx.db
         .query("settlements")
         .filter((q) => q.eq(q.field("groupId"), group._id))
         .collect();
 
       for (const st of settlements) {
-       
+        // we only care if ONE side is me
         if (st.paidByUserId === me._id && balances[st.receivedByUserId]) {
           balances[st.receivedByUserId].owing = Math.max(
             0,
@@ -208,7 +209,7 @@ export const getSettlementData = query({
         }
       }
 
- 
+
       const members = await Promise.all(
         Object.keys(balances).map((id) => ctx.db.get(id))
       );
@@ -237,9 +238,6 @@ export const getSettlementData = query({
       };
     }
 
-   
     throw new Error("Invalid entityType; expected 'user' or 'group'");
   },
 });
-
-export default createSettlement

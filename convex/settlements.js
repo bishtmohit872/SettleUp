@@ -3,7 +3,7 @@ import { v } from "convex/values";
 import { internal } from "./_generated/api";
 
 
-const settlement = mutation=>({
+const createSettlement = mutation=>({
   args: {
     amount: v.number(), // must be > 0
     note: v.optional(v.string()),

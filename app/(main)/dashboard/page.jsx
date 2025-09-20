@@ -62,7 +62,7 @@ const Dashboard = () =>{
                                             balances.totalBalance > 0?(
                                                 <div className="flex items-center justify-between">
                                                     <span className="text-green-600">
-                                                        +₹ {balances?.totalBalance.toFixed(2)}
+                                                        ₹ {balances?.totalBalance.toFixed(2)}
                                                     </span>
                                                     <Image src="/increment.svg" alt="increment" width={300} height={300}/>
                                                 </div>
@@ -70,7 +70,7 @@ const Dashboard = () =>{
                                             balances.totalBalance<0?(
                                                 <div className="flex items-center justify-between">
                                                     <span className="text-red-600">
-                                                        -₹ {balances?.totalBalance.toFixed(2)}
+                                                        ₹ {balances?.totalBalance.toFixed(2)}
                                                     </span>
                                                     <Image src="/decrement.svg" alt="decrement" width={300} height={300}/>
                                                 </div>

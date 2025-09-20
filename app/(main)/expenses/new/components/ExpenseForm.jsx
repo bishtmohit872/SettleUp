@@ -121,7 +121,7 @@ const ExpenseForm=({ type = "individual", onSuccess })=>{
       }
 
       // For 1:1 expenses, set groupId to undefined instead of empty string
-      const groupId = type === "individual" ? undefined : data.groupId;
+      const groupId = (type === "individual" ? undefined : data.groupId);
 
       // Create the expense
       await createExpense.mutate({
@@ -263,7 +263,7 @@ const ExpenseForm=({ type = "individual", onSuccess })=>{
         )}
 
         {/* Participants (for individual expenses) */}
-        {type === "indiviual" && (
+        {type === "individual" && (
           <div className="space-y-2">
             <Label>Participants</Label>
             <ParticipantSelector

@@ -71,7 +71,7 @@ const ContactPage = () => {
           ) : (
             <div className="flex flex-col gap-4">
               {users.map((user) => (
-                <Link key={user.id} href={`/person/${users.id}`}>
+                <Link key={user.id} href={`/person/${user.id}`}>
                   <Card className="hover:bg-muted/30 transition-colors- cursor-pointer">
                     <CardContent className="py-4">
                       <div className="flex items-center justify-between">

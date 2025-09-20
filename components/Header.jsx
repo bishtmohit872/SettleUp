@@ -32,6 +32,7 @@ const Header = () => {
             height={60}
             className="h-11 w-auto object-contain"
           />
+          <span className="text-xl hidden md:block text-green-600">ettleUp</span>
         </Link>
 
         {path === "/" && (

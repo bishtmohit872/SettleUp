@@ -36,7 +36,7 @@ const Header = () => {
         </Link>
 
         {path === "/" && (
-          <div className="hidden md:flex md:items-center md:justify-center gap-6 text-gray-800 ml-28">
+          <div className="hidden md:flex md:items-center md:justify-center gap-6 text-gray-800">
             <Link
               href="#features"
               className="text-sm font-medim hover:text-gren-600 transition hover:text-green-950"

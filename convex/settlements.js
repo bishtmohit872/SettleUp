@@ -242,4 +242,4 @@ export const getSettlementData = query({
   },
 });
 
-export default settlement
+export default createSettlement

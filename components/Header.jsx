@@ -26,7 +26,7 @@ const Header = () => {
       <nav className="w-full mx-auto px-4 h-16 flex items-center justify-between border-2">
         <Link href="/" className="flex items-center gap-2">
           <Image
-            src={"/logos/logo3.png"}
+            src={"/logos/logo-s.ico"}
             alt="DividoFlex"
             width={200}
             height={60}

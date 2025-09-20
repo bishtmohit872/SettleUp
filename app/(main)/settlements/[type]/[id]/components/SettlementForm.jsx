@@ -292,9 +292,9 @@ const SettlementForm=({ entityType, entityData, onSuccess })=>{
                       }`}
                     >
                       {isOwing
-                        ? `has to give you ₹${Math.abs(member.netBalance).toFixed(2)}`
+                        ? `you have to give ₹${Math.abs(member.netBalance).toFixed(2)}`
                         : isOwed
-                          ? `you have to give ₹${Math.abs(member.netBalance).toFixed(2)}`
+                          ? `has to give you ₹${Math.abs(member.netBalance).toFixed(2)}`
                           : "Settled up"}
                     </div>
                   </div>

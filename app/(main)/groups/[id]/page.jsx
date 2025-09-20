@@ -80,7 +80,7 @@ const GroupPage = () => {
 
           <div className="flex flex-col md:flex-row gap-2">
             <Button asChild variant="outline">
-              <Link href={`/settlements/user/${params.id}`}>
+              <Link href={`/settlements/group/${params.id}`}>
                 <ArrowLeftRight className="mr-2 size-4" />
                 Settle Up
               </Link>

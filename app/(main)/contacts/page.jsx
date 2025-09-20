@@ -45,7 +45,7 @@ const ContactPage = () => {
     <div className="container mx-auto py-6 px-4">
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-4xl gradient-title">Contacts</h1>
-        <Button
+        <Button className="hover:cursor-pointer"
           onClick={() => {
             setIsCreateGroupModalOpen(true);
           }}

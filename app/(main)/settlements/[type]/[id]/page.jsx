@@ -42,7 +42,7 @@ const SettlementPage=()=>{
   };
 
   return (
-    <div className="container mx-auto py-6 max-w-lg">
+    <div className="px-4 container mx-auto py-6 max-w-lg">
       <Button
         variant="outline"
         size="sm"
